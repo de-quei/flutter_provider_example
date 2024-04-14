@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'provider/album_provider.dart';
+import 'screens/album_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,11 +13,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      home: ChangeNotifierProvider<AlbumProvider>(
+        create: (context) => AlbumProvider(),
+        child: const AlbumScreen(),
       ),
     );
   }
